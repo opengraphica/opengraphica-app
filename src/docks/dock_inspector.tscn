@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/themes/editor_theme/panel_stylebox_section_title.tres" type="StyleBox" id=1]
+
+[node name="DockInspector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionHeader" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 1001.0
+margin_bottom = 31.0
+custom_styles/panel = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SelectionHeader"]
+margin_top = 1.0
+margin_right = 1001.0
+margin_bottom = 31.0
+custom_constants/margin_top = 8
+custom_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/SelectionHeader/MarginContainer"]
+margin_top = 8.0
+margin_right = 1001.0
+margin_bottom = 22.0
+text = "Nothing Selected"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 35.0
+margin_right = 1001.0
+margin_bottom = 49.0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+margin_right = 1001.0
+margin_bottom = 14.0
+text = "Select a layer to view properties."
+autowrap = true

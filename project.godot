@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "HistoryAction",
+"class": "FileCreateAction",
+"language": "GDScript",
+"path": "res://src/actions/file_create_action.gd"
+}, {
+"base": "Reference",
+"class": "HistoryAction",
+"language": "GDScript",
+"path": "res://src/actions/history_action.gd"
+}, {
+"base": "HistoryAction",
+"class": "PageCreateAction",
+"language": "GDScript",
+"path": "res://src/actions/page_create_action.gd"
+}, {
+"base": "HistoryAction",
+"class": "PageSelectAction",
+"language": "GDScript",
+"path": "res://src/actions/page_select_action.gd"
+} ]
+_global_script_class_icons={
+"FileCreateAction": "",
+"HistoryAction": "",
+"PageCreateAction": "",
+"PageSelectAction": ""
+}
+
+[application]
+
+config/name="OpenGraphica"
+run/main_scene="res://src/editors/editor_main.tscn"
+boot_splash/bg_color=Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+Workspace="*res://workspace.gd"
+
+[display]
+
+window/size/width=1000
+window/size/height=800
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.12549, 0.145098, 0.192157, 1 )
+environment/default_environment="res://default_env.tres"

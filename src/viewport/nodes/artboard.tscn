@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/viewport/nodes/artboard.gd" type="Script" id=1]
+
+
+[node name="Artboard" type="ViewportContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+stretch = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArtboardViewport" type="Viewport" parent="."]
+size = Vector2( 40, 40 )
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Bounds" type="Control" parent="ArtboardViewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="ArtboardViewport/Bounds"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Children" type="Node2D" parent="ArtboardViewport/Bounds"]
