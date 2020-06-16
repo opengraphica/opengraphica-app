@@ -43,6 +43,24 @@ func undo_action():
 
 var working_file = null
 
+func get_page_index_by_id(id: int):
+	var index = null
+	if working_file:
+		for i in working_file.pages.size():
+			var page = working_file.pages[i]
+			if page.id == id:
+				index = i
+				break
+	return index
+
+func get_page_id_by_index(index: int):
+	var id = null
+	if working_file and working_file.pages.size() > index:
+		id = working_file.pages[index].id
+	return id
+
+# Lifecycle
+
 func _ready():
 	# Init new file without history event
 	FileCreateAction.new().do()

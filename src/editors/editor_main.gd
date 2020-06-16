@@ -10,8 +10,8 @@ var right_sidebar_size = 200
 func _ready():
 	JavaScript.eval("window.hideLogo()", true)
 	get_tree().get_root().connect("size_changed", self, "_window_resize")
-	sidebar_container_outer = $VBoxContainer/HSplitContainer
-	sidebar_container_inner = $VBoxContainer/HSplitContainer/HSplitContainer
+	sidebar_container_outer = $MarginContainer/VBoxContainer/HSplitContainer
+	sidebar_container_inner = $MarginContainer/VBoxContainer/HSplitContainer/HSplitContainer
 	sidebar_container_outer.connect("dragged", self, "_sidebar_container_outer_dragged")
 	sidebar_container_inner.connect("dragged", self, "_sidebar_container_inner_dragged")
 	_resize_sidebars()

@@ -8,9 +8,9 @@
 [ext_resource path="res://src/themes/editor_theme/tab_stylebox_fg.tres" type="StyleBox" id=6]
 [ext_resource path="res://src/themes/editor_theme/tab_stylebox_bg.tres" type="StyleBox" id=7]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 
 [resource]
 Fonts/fonts/large = null
@@ -25,8 +25,8 @@ ItemList/constants/vseparation = 4
 ItemList/fonts/font = null
 ItemList/styles/bg = ExtResource( 4 )
 ItemList/styles/bg_focus = ExtResource( 4 )
-ItemList/styles/cursor = SubResource( 3 )
-ItemList/styles/cursor_unfocused = SubResource( 4 )
+ItemList/styles/cursor = SubResource( 1 )
+ItemList/styles/cursor_unfocused = SubResource( 2 )
 ItemList/styles/selected = ExtResource( 3 )
 ItemList/styles/selected_focus = ExtResource( 3 )
 MarginContainer/constants/margin_bottom = 6
@@ -34,6 +34,24 @@ MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 6
 PanelContainer/styles/panel = ExtResource( 1 )
+PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = ExtResource( 5 )
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
 TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
 TabContainer/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 TabContainer/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )

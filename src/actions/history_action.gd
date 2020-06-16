@@ -4,6 +4,7 @@ class_name HistoryAction
 enum ID {
 	FILE_CREATE,
 	PAGE_CREATE,
+	PAGE_DELETE,
 	PAGE_SELECT,
 	UNDEFINED,
 }
