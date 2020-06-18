@@ -14,7 +14,9 @@ func do():
 		"filename": "new_file",
 		"extension": "opgr",
 		"page_id_counter": 0,
+		"artboard_id_counter": 0,
 		"selected_page_id": null,
+		"selected_artboard_id": null,
 		"pages": [],
 		"resources": [],
 	}

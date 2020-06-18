@@ -59,6 +59,38 @@ func get_page_id_by_index(index: int):
 		id = working_file.pages[index].id
 	return id
 
+func get_selected_page():
+	if working_file and working_file.selected_page_id != null:
+		return working_file.pages[get_page_index_by_id(working_file.selected_page_id)]
+	else:
+		return null
+
+func get_artboard_index_by_id(id: int):
+	var index = null
+	var selected_page = get_selected_page()
+	if selected_page:
+		for i in selected_page.artboards.size():
+			var artboard = selected_page.artboards[i]
+			if artboard.id == id:
+				index = i
+				break
+	return index
+
+func get_artboard_id_by_index(index: int):
+	var id = null
+	var selected_page = get_selected_page()
+	if selected_page and selected_page.artboards.size() > index:
+		id = selected_page.artboards[index].id
+	return id
+
+func get_selected_artboard():
+	var selected_artboard = null
+	if working_file and working_file.selected_artboard_id != null:
+		var selected_page = get_selected_page()
+		if selected_page:
+			selected_artboard = selected_page.artboards[get_artboard_index_by_id(working_file.selected_artboard_id)]
+	return selected_artboard
+
 # Lifecycle
 
 func _ready():

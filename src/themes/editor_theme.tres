@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://src/themes/editor_theme/panel_stylebox.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/themes/editor_theme/panel_stylebox_borderless.tres" type="StyleBox" id=2]
@@ -7,12 +7,26 @@
 [ext_resource path="res://src/themes/editor_theme/tooltip_stylebox.tres" type="StyleBox" id=5]
 [ext_resource path="res://src/themes/editor_theme/tab_stylebox_fg.tres" type="StyleBox" id=6]
 [ext_resource path="res://src/themes/editor_theme/tab_stylebox_bg.tres" type="StyleBox" id=7]
+[ext_resource path="res://src/themes/editor_theme/button_stylebox_normal.tres" type="StyleBox" id=8]
+[ext_resource path="res://src/themes/editor_theme/button_stylebox_focus.tres" type="StyleBox" id=9]
+[ext_resource path="res://src/themes/editor_theme/button_stylebox_hover.tres" type="StyleBox" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
 [sub_resource type="StyleBoxFlat" id=2]
 
 [resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = ExtResource( 9 )
+Button/styles/hover = ExtResource( 10 )
+Button/styles/normal = ExtResource( 8 )
+Button/styles/pressed = ExtResource( 8 )
 Fonts/fonts/large = null
 Fonts/fonts/normal = null
 ItemList/colors/font_color = Color( 1, 1, 1, 1 )

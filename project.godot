@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "HistoryAction",
+"class": "ArtboardCreateAction",
+"language": "GDScript",
+"path": "res://src/actions/artboard_create_action.gd"
+}, {
+"base": "HistoryAction",
 "class": "FileCreateAction",
 "language": "GDScript",
 "path": "res://src/actions/file_create_action.gd"
@@ -33,13 +38,20 @@ _global_script_classes=[ {
 "class": "PageSelectAction",
 "language": "GDScript",
 "path": "res://src/actions/page_select_action.gd"
+}, {
+"base": "Reference",
+"class": "TreeController",
+"language": "GDScript",
+"path": "res://src/utility_classes/tree_controller.gd"
 } ]
 _global_script_class_icons={
+"ArtboardCreateAction": "",
 "FileCreateAction": "",
 "HistoryAction": "",
 "PageCreateAction": "",
 "PageDeleteAction": "",
-"PageSelectAction": ""
+"PageSelectAction": "",
+"TreeController": ""
 }
 
 [application]
@@ -54,6 +66,10 @@ config/icon="res://icon.png"
 [autoload]
 
 Workspace="*res://workspace.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 

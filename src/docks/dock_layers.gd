@@ -15,6 +15,7 @@ var page_list: ItemList
 var selected_page_heading: PanelContainer
 var selected_page_label: Label
 var selected_page_tree: Tree
+var selected_page_tree_root: TreeItem
 var page_context_menu: PopupMenu
 
 func _ready():
@@ -36,40 +37,24 @@ func _ready():
 	page_list.connect("item_rmb_selected", self, "_page_context_menu_opened")
 	page_context_menu.connect("id_pressed", self, "_page_context_menu_selection")
 	Workspace.connect("history_change", self, "_history_change")
-	
-	var root = selected_page_tree.create_item()
-	selected_page_tree.set_hide_root(true)
-	var child1 = selected_page_tree.create_item(root)
-	var child2 = selected_page_tree.create_item(root)
-	var subchild1 = selected_page_tree.create_item(child1)
-	subchild1.set_text(0, "Subchild1")
 
 
 func _history_change(action: HistoryAction):
-	var selected_page
+	print_debug(HistoryAction.ID.keys()[action.id])
+	var selected_page = null
 	if [HistoryAction.ID.PAGE_CREATE, HistoryAction.ID.PAGE_DELETE].has(action.id):
-		page_list.clear()
-		for i in Workspace.working_file.pages.size():
-			var page = Workspace.working_file.pages[i]
-			page_list.add_item(page.display_name, file_icon)
-			page_list.set_item_tooltip_enabled(i, false)
+		_create_page_list_items()
 	if [HistoryAction.ID.PAGE_CREATE, HistoryAction.ID.PAGE_DELETE, HistoryAction.ID.PAGE_SELECT].has(action.id):
-		var selected_page_index = -1
-		for i in Workspace.working_file.pages.size():
-			var page = Workspace.working_file.pages[i]
-			if Workspace.working_file.selected_page_id == page.id:
-				selected_page = page
-				page_list.set_item_icon(i, pencil_icon)
-				page_list.select(i)
-				page_list.ensure_current_is_visible()
-			else:
-				page_list.set_item_icon(i, file_icon)
+		selected_page = _set_page_list_item_selection()
+	if [HistoryAction.ID.PAGE_CREATE, HistoryAction.ID.PAGE_DELETE, HistoryAction.ID.PAGE_SELECT, HistoryAction.ID.ARTBOARD_CREATE].has(action.id):
+		_create_selected_page_outline_items()
 	if Workspace.working_file.pages.size() > 4:
 		page_list.auto_height = false
 		page_list.rect_min_size.y = 100
 	else:
 		page_list.auto_height = true
 		page_list.rect_min_size.y = 0
+	
 	selected_page_heading.visible = true if Workspace.working_file.selected_page_id != null else false
 	selected_page_tree.visible = true if Workspace.working_file.selected_page_id != null else false
 	if selected_page_heading.visible and selected_page:
@@ -86,6 +71,26 @@ func _page_selected(index: int):
 			"id": Workspace.working_file.pages[index].id
 		})
 	)
+
+func _create_page_list_items():
+	page_list.clear()
+	for i in Workspace.working_file.pages.size():
+		var page = Workspace.working_file.pages[i]
+		page_list.add_item(page.display_name, file_icon)
+		page_list.set_item_tooltip_enabled(i, false)
+
+func _set_page_list_item_selection():
+	var selected_page = null
+	for i in Workspace.working_file.pages.size():
+		var page = Workspace.working_file.pages[i]
+		if Workspace.working_file.selected_page_id == page.id:
+			selected_page = page
+			page_list.set_item_icon(i, pencil_icon)
+			page_list.select(i)
+			page_list.ensure_current_is_visible()
+		else:
+			page_list.set_item_icon(i, file_icon)
+	return selected_page
 
 func _page_context_menu_opened(index: int, at_position: Vector2):
 	page_context_menu.clear()
@@ -104,4 +109,16 @@ func _page_context_menu_selection(id: int):
 			)
 
 func _add_artboard_pressed():
-	pass
+	Workspace.do_action(
+		ArtboardCreateAction.new({})
+	)
+
+func _create_selected_page_outline_items():
+	selected_page_tree.clear()
+	selected_page_tree_root = selected_page_tree.create_item()
+	selected_page_tree.set_hide_root(true)
+	var selected_page = Workspace.get_selected_page()
+	if selected_page:
+		for artboard in selected_page.artboards:
+			var artboard_item = selected_page_tree.create_item(selected_page_tree_root)
+			artboard_item.set_text(0, artboard.display_name)

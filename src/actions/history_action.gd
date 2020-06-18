@@ -2,6 +2,7 @@ extends Reference
 class_name HistoryAction
 
 enum ID {
+	ARTBOARD_CREATE,
 	FILE_CREATE,
 	PAGE_CREATE,
 	PAGE_DELETE,
